@@ -5,6 +5,7 @@ import { Loading } from '../Loading/Loading'
 import { IStarship, IPageInfo } from '../../interfaces'
 import { Pages } from '../Pages/Pages'
 import { useParams, useNavigate } from 'react-router-dom'
+import { ShipsTable } from '../ShipsTable/ShipsTable'
 
 export const Home = () => { 
 
@@ -51,17 +52,6 @@ export const Home = () => {
     else alert('This ship is unavailable')
   }
 
-  const allShips = starships?.map((ship:IStarship, index) => (
-    <tr onClick={() => goToShipPage(ship.url)}>
-      <td>{ship.name}</td>
-      <td>{ship.model}</td>
-      <td>{ship.manufacturer}</td>
-      <td>{ship.cost_in_credits}</td>
-      <td>{ship.crew}</td>
-      <td>{ship.passengers}</td>
-    </tr>
-  ))
-
   return (
     <main className='home-page'>
       <h1>Galaxy starships</h1>
@@ -69,19 +59,7 @@ export const Home = () => {
         {
           error ? error : loading ? <Loading /> : (
             <>
-              <table>
-                <tbody>
-                  <tr>
-                    <th>Name</th>
-                    <th>Model</th>
-                    <th>Manufacturer</th>
-                    <th>Cost in credits</th>
-                    <th>Crew</th>
-                    <th>Passengers</th>
-                  </tr>
-                  {allShips}
-                </tbody>
-              </table>
+              <ShipsTable ships={starships!} />
               <Pages info={pageInfo!} />
             </>
           )

@@ -1,0 +1,19 @@
+.add-ship-page{
+  padding: 20px;
+}
+
+.add-ship-form{
+  display: grid;
+  grid-template-columns: repeat(4, 280px);
+  gap: 10px;
+  align-items: end;
+}
+
+label{
+  display: flex;
+  flex-direction: column;
+}
+
+input[type=submit]{
+  height: 50px;
+}

@@ -8,3 +8,7 @@
 body{
   margin: 0;
 }
+
+input[type=text], input[type=number]{
+  padding: 5px;
+}

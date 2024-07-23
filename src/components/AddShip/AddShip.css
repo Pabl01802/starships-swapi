@@ -4,16 +4,27 @@
 
 .add-ship-form{
   display: grid;
-  grid-template-columns: repeat(4, 280px);
+  grid-template-columns: repeat(2, 280px);
   gap: 10px;
   align-items: end;
 }
 
-label{
+.add-ship-label{
   display: flex;
   flex-direction: column;
+  input{
+    border: none;
+    border-bottom: 2px solid black;
+  }
 }
 
 input[type=submit]{
   height: 50px;
+  border: none;
+  background: rgb(144, 233, 96);
+  transition: .2s;
+  &:hover{
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
 }

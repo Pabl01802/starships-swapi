@@ -12,6 +12,9 @@ th, td{
   padding: 10px;
   border: 1px solid black;
   text-align: center;
+}
+
+tr td{
   transition: .2s;
   &:hover{
     cursor: pointer;

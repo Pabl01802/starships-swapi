@@ -20,6 +20,7 @@ export const Starship = () => {
 
   const [current] = useState(params.id)
   const [starship, setStarship] = useState<IStarship | null>(null)
+  const [isLocal] = useState(current?.includes('local'))
   const [loading ,setLoading] = useState(true)
   const [error, setError] = useState('')
 
@@ -41,6 +42,7 @@ export const Starship = () => {
         try{
           const found = JSON.parse(localStorage.getItem('localShips')!).find((item:IStarship) => item.url === current)
           setLoading(false)
+          if(!found) setError('Cannot find this ship')
           setStarship(found)
         }catch(err){
           console.log(err)
@@ -79,65 +81,65 @@ export const Starship = () => {
     <main className='starship-container'>
       {
         error ? error : loading ? <Loading /> : (
-          <form className='add-ship-form'>
-            <label>
+          <form className='ship-form'>
+            <label className='ship-form-label'>
               <span>Name</span>
-              <input type='text' defaultValue={starship?.name} {...register('name')} required />
+              <input type='text' defaultValue={starship?.name} disabled={!isLocal} {...register('name')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Model</span>
-              <input type='text' defaultValue={starship?.model} {...register('model')} required />
+              <input type='text' defaultValue={starship?.model} disabled={!isLocal} {...register('model')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Manufacturer</span>
-              <input type='text' defaultValue={starship?.manufacturer} {...register('manufacturer')} required />
+              <input type='text' defaultValue={starship?.manufacturer} disabled={!isLocal} {...register('manufacturer')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Cost in credits</span>
-              <input type='number' defaultValue={starship?.cost_in_credits} {...register('cost_in_credits')} required />
+              <input type='number' defaultValue={starship?.cost_in_credits} disabled={!isLocal} {...register('cost_in_credits')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Length</span>
-              <input type='number' defaultValue={starship?.length} {...register('length')} required />
+              <input type='number' defaultValue={starship?.length.replace(',', '.')} disabled={!isLocal} {...register('length')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Max atmospheric speed</span>
-              <input type='number' defaultValue={starship?.max_atmosphering_speed} {...register('max_atmospheric_speed')} required />
+              <input type='number' defaultValue={starship?.max_atmosphering_speed} disabled={!isLocal} {...register('max_atmospheric_speed')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Crew</span>
-              <input type='string' defaultValue={starship?.crew} {...register('crew')} />
+              <input type='string' defaultValue={starship?.crew} disabled={!isLocal} {...register('crew')} />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Passengers</span>
-              <input type='text' defaultValue={starship?.passengers} {...register('passengers')}/>
+              <input type='text' defaultValue={starship?.passengers} disabled={!isLocal} {...register('passengers')}/>
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Cargo capacity</span>
-              <input type='number' defaultValue={starship?.cargo_capacity} {...register('cargo_capacity')} required />
+              <input type='number' defaultValue={starship?.cargo_capacity} disabled={!isLocal} {...register('cargo_capacity')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Consumables</span>
-              <input type='text' defaultValue={starship?.consumables} {...register('consumables')} required />
+              <input type='text' defaultValue={starship?.consumables} disabled={!isLocal} {...register('consumables')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Hyperdrive rating</span>
-              <input type='number' defaultValue={starship?.hyperdrive_rating} {...register('hyperdrive_rating')} required />
+              <input type='number' defaultValue={starship?.hyperdrive_rating} disabled={!isLocal} {...register('hyperdrive_rating')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>MGLT</span>
-              <input type='number' defaultValue={starship?.MGLT} {...register('MGLT')} required />
+              <input type='number' defaultValue={starship?.MGLT} disabled={!isLocal} {...register('MGLT')} required />
             </label>
-            <label>
+            <label className='ship-form-label'>
               <span>Starship class</span>
-              <input type='text' defaultValue={starship?.starship_class} {...register('starship_class')} required />
+              <input type='text' defaultValue={starship?.starship_class} disabled={!isLocal} {...register('starship_class')} required />
             </label>
             {
               current?.includes('local') && (
-                <>
+                <div className='buttons'>
                   <button onClick={handleSubmit((data, e) => handleSubmitForm(data, e))} className='save-button'>Save changes</button>
                   <button onClick={handleSubmit((data, e) => handleSubmitForm(data, e))} className='remove-button'>Remove</button>
-                </>
+                </div>
               )
             }
           </form>

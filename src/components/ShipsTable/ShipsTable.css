@@ -12,9 +12,12 @@ th, td {
   padding: 10px;
   border: 1px solid black;
   text-align: center;
+}
+
+tr td {
   transition: 0.2s;
 }
-th:hover, td:hover {
+tr td:hover {
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.1);
 }/*# sourceMappingURL=ShipsTable.css.map */

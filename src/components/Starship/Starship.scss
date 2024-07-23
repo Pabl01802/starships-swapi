@@ -1,3 +1,49 @@
 .starship-container{
   padding: 20px;
 }
+
+.ship-form-label{
+  display: flex;
+  flex-direction: column;
+}
+
+.ship-form-label input{
+  border: none;
+  border-bottom: 2px solid black;
+  &:disabled{
+    border: none;
+    background: transparent;
+  }
+}
+
+.ship-form{
+  display: grid;
+  grid-template-columns: repeat(2, 280px);
+  gap: 10px;
+  align-items: end;
+}
+
+.buttons{
+  grid-row: 8/9;
+  grid-column: 1/3;
+  display: flex;
+  gap: 10px;
+  button{
+    width: 50%;
+    border: none;
+    padding: 3px;
+    transition: .2s;
+    &:hover{
+      transform: translateY(-2px);
+      cursor: pointer;
+    }
+  }
+}
+
+.save-button{
+  background: rgb(144, 233, 96);
+}
+
+.remove-button{
+  background: rgb(233, 96, 96);
+}

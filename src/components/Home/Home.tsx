@@ -44,10 +44,15 @@ export const Home = () => {
     }
   }, [currentPage])
 
-  const goToShipPage = (id:number) => navigate(`/starships/${id}`)
+  const goToShipPage = (url:string) => {
+    let matches = url.match(/(\d+)/);
+
+    if(matches) navigate(`/starships/${matches[0]}`)
+    else alert('This ship is unavailable')
+  }
 
   const allShips = starships?.map((ship:IStarship, index) => (
-    <tr onClick={() => goToShipPage(index)}>
+    <tr onClick={() => goToShipPage(ship.url)}>
       <td>{ship.name}</td>
       <td>{ship.model}</td>
       <td>{ship.manufacturer}</td>

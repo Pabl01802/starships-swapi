@@ -1,0 +1,20 @@
+.change-page-container{
+  display: grid;
+  place-items: center;
+  grid-template-columns: 90px 20px 90px;
+}
+
+.change-page-button{
+  color: black;
+  text-decoration: none;
+  font-style: italic;
+  padding: 5px;
+  transition: .2s;
+  &:hover{
+    background-color: rgba(0, 0, 0, .1)
+  }
+}
+
+.current-page{
+  grid-column: 2/3;
+}

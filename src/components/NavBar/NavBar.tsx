@@ -1,6 +1,4 @@
-import React from 'react'
 import './NavBar.css'
-import { Link } from 'react-router-dom'
 import { LinkButton } from '../LinkButton/LinkButton.tsx'
  
 export const NavBar = () => {

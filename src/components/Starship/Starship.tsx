@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { BaseSyntheticEvent, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Loading } from '../Loading/Loading'
@@ -35,7 +35,6 @@ export const Starship = () => {
   }
 
   useEffect(() => {
-    console.log(current)
     if(current){
       const isLocal = current.includes('local')
       if(isLocal){
@@ -45,14 +44,13 @@ export const Starship = () => {
           if(!found) setError('Cannot find this ship')
           setStarship(found)
         }catch(err){
-          console.log(err)
           setError('Cannot find this ship')
         }
       }else getStarship()
     }
   }, [current])
 
-  const handleSubmitForm = (data, e) => {
+  const handleSubmitForm = (data:IInputs, e:BaseSyntheticEvent) => {
     const className = e.target.className
     if(className === 'save-button'){
       try{
@@ -61,7 +59,6 @@ export const Starship = () => {
         allLocalShips[index] = {...data, url: allLocalShips[index].url, createdAt: allLocalShips[index].createdAt, editedAt: new Date()}
         localStorage.setItem('localShips', JSON.stringify(allLocalShips))
       }catch(err){
-        console.log(err)
         setError('Error while trying to edit a ship')
       }
     }else if(className === 'remove-button'){
@@ -71,7 +68,6 @@ export const Starship = () => {
         localStorage.setItem('localShips', JSON.stringify(allLocalShips))
         navigate('/localShips')
       }catch(err){
-        console.log(err)
         setError('Error while trying to remove a ship')
       }
     }
@@ -137,8 +133,8 @@ export const Starship = () => {
             {
               current?.includes('local') && (
                 <div className='buttons'>
-                  <button onClick={handleSubmit((data, e) => handleSubmitForm(data, e))} className='save-button'>Save changes</button>
-                  <button onClick={handleSubmit((data, e) => handleSubmitForm(data, e))} className='remove-button'>Remove</button>
+                  <button onClick={handleSubmit((data, e) => handleSubmitForm(data, e!))} className='save-button'>Save changes</button>
+                  <button onClick={handleSubmit((data, e) => handleSubmitForm(data, e!))} className='remove-button'>Remove</button>
                 </div>
               )
             }

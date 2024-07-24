@@ -1,4 +1,3 @@
-import React from 'react'
 import { IShipsTableProps, IStarship } from '../../interfaces'
 import { useNavigate } from 'react-router-dom'
 import './ShipsTable.css'
@@ -16,7 +15,7 @@ export const ShipsTable = ({ ships }:IShipsTableProps) => {
   }
 
   const allShips = ships?.map((ship:IStarship, index) => (
-    <tr onClick={() => goToShipPage(ship.url)}>
+    <tr key={`ship-${index}`} onClick={() => goToShipPage(ship.url)}>
       <td>{ship.name}</td>
       <td>{ship.model}</td>
       <td>{ship.manufacturer}</td>

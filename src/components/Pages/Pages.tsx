@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { IPagesProps } from '../../interfaces'
 import { Link, useParams } from 'react-router-dom'
 import './Pages.css'

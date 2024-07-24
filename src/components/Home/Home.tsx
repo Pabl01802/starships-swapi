@@ -4,13 +4,12 @@ import './Home.css'
 import { Loading } from '../Loading/Loading'
 import { IStarship, IPageInfo } from '../../interfaces'
 import { Pages } from '../Pages/Pages'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ShipsTable } from '../ShipsTable/ShipsTable'
 
 export const Home = () => { 
 
   const params = useParams()
-  const navigate = useNavigate()
 
   const [starships, setStarships] = useState<IStarship[] | null>(null)
   const [pageInfo, setPageInfo] = useState<IPageInfo | null>(null)
@@ -29,7 +28,6 @@ export const Home = () => {
       })
       setLoading(false)
     }catch(err){
-      console.log(err)
       setError('Cannot load starships')
     }
   }
@@ -44,13 +42,6 @@ export const Home = () => {
       setLoading(true)
     }
   }, [currentPage])
-
-  const goToShipPage = (url:string) => {
-    let matches = url.match(/(\d+)/);
-
-    if(matches) navigate(`/starships/${matches[0]}`)
-    else alert('This ship is unavailable')
-  }
 
   return (
     <main className='home-page'>

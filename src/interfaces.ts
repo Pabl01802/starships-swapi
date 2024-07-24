@@ -48,3 +48,10 @@ export interface IInputs{
 export interface IShipsTableProps {
   ships: IStarship[]
 }
+
+export interface ILinkButtonProps{
+  text: string,
+  to: string,
+  bg?: string,
+  color?: string
+}

@@ -32,18 +32,44 @@
     width: 50%;
     border: none;
     padding: 3px;
-    transition: .2s;
+    transition: var(--transition);
     &:hover{
-      transform: translateY(-2px);
+      transform: var(--translateY);
       cursor: pointer;
     }
   }
 }
 
 .save-button{
-  background: rgb(144, 233, 96);
+  background: var(--green);
 }
 
 .remove-button{
-  background: rgb(233, 96, 96);
+  background: var(--red);
+}
+
+@media(max-width: 800px){
+  .ship-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ship-form-label{
+    width: 70%;
+  }
+
+  .buttons{
+    grid-row: auto;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media(max-width: 400px){
+  .ship-form-label{
+    width: 90%;
+  }
 }

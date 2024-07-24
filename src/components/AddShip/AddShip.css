@@ -2,11 +2,16 @@
   padding: 20px;
 }
 
+.add-ship-header{
+  text-align: center;
+}
+
 .add-ship-form{
   display: grid;
   grid-template-columns: repeat(2, 280px);
   gap: 10px;
   align-items: end;
+  justify-content: center;
 }
 
 .add-ship-label{
@@ -21,10 +26,16 @@
 input[type=submit]{
   height: 50px;
   border: none;
-  background: rgb(144, 233, 96);
+  background: var(--green);
   transition: .2s;
   &:hover{
     cursor: pointer;
-    transform: translateY(-2px);
+    transform: var(--translateY);
+  }
+}
+
+@media(max-width: 600px){
+  .add-ship-form{
+    grid-template-columns: 1fr;
   }
 }

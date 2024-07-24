@@ -1,0 +1,10 @@
+.link-button{
+  padding: 5px;
+  display: block;
+  text-decoration: none;
+  transition: var(--transition);
+  text-align: center;
+  &:hover{
+    transform: var(--translateY);
+  }
+}

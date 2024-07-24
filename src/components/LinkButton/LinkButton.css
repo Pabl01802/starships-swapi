@@ -1,0 +1,10 @@
+.link-button {
+  padding: 5px;
+  display: block;
+  text-decoration: none;
+  transition: var(--transition);
+  text-align: center;
+}
+.link-button:hover {
+  transform: var(--translateY);
+}/*# sourceMappingURL=LinkButton.css.map */

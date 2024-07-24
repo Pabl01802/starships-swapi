@@ -108,7 +108,7 @@ export const Starship = () => {
             </label>
             <label className='ship-form-label'>
               <span>Crew</span>
-              <input type='string' defaultValue={starship?.crew} disabled={!isLocal} {...register('crew')} />
+              <input type='text' defaultValue={starship?.crew} disabled={!isLocal} {...register('crew')} />
             </label>
             <label className='ship-form-label'>
               <span>Passengers</span>

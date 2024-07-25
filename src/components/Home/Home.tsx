@@ -6,7 +6,7 @@ import { IStarship, IPageInfo } from '../../interfaces'
 import { Pages } from '../Pages/Pages'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { ShipsTable } from '../ShipsTable/ShipsTable'
-import { sortedShips } from '../functions'
+import { sortedShips } from '../../functions'
 
 export const Home = () => { 
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { ShipsTable } from '../ShipsTable/ShipsTable'
 import { IStarship } from '../../interfaces'
 import { useSearchParams } from 'react-router-dom'
-import { sortedShips } from '../functions'
+import { sortedShips } from '../../functions'
 import './LocalShips.css'
 
 export const LocalShips = () => {

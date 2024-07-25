@@ -1,0 +1,13 @@
+.table-header {
+  text-align: center;
+}
+
+.table-header-button {
+  display: flex;
+  width: -moz-max-content;
+  width: max-content;
+  width: 100%;
+  text-decoration: none;
+  justify-content: center;
+  color: black;
+}/*# sourceMappingURL=TableHeader.css.map */

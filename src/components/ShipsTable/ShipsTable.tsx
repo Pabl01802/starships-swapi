@@ -1,10 +1,20 @@
+import { useEffect, useState } from 'react'
 import { IShipsTableProps, IStarship } from '../../interfaces'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation, useParams, useSearchParams } from 'react-router-dom'
+import { TableHeader } from '../TableHeader/TableHeader'
 import './ShipsTable.css'
 
 export const ShipsTable = ({ ships }:IShipsTableProps) => {
 
+  const params = useParams()
+  const location = useLocation()
+  const [searchParams] = useSearchParams()
+  const [asc, setAsc] = useState<boolean | undefined>(searchParams.get('sort')?.toLowerCase().includes('asc'))
   const navigate = useNavigate()
+
+  useEffect(() => {
+    setAsc(searchParams.get('sort')?.toLowerCase().includes('asc'))
+  }, [searchParams])
 
   const goToShipPage = (url:string) => {
     const isLocal = url.includes('local')
@@ -33,12 +43,12 @@ export const ShipsTable = ({ ships }:IShipsTableProps) => {
           <table>
           <tbody>
             <tr>
-              <th>Name</th>
-              <th>Model</th>
-              <th>Manufacturer</th>
-              <th>Cost in credits</th>
-              <th>Crew</th>
-              <th>Passengers</th>
+              <TableHeader page={params?.page! || location.pathname.slice(1)} asc={asc} property={'name'} />
+              <TableHeader page={params?.page! || location.pathname.slice(1)} asc={asc} property={'model'} />
+              <TableHeader page={params?.page! || location.pathname.slice(1)} asc={asc} property={'manufacturer'} />
+              <TableHeader page={params?.page! || location.pathname.slice(1)} asc={asc} property={'cost'} />
+              <TableHeader page={params?.page! || location.pathname.slice(1)} asc={asc} property={'crew'} />
+              <TableHeader page={params?.page! || location.pathname.slice(1)} asc={asc} property={'passengers'} />
             </tr>
             {allShips}
           </tbody>

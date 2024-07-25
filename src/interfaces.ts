@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react"
+
 export interface IStarship {
   MGLT: string,
   cargo_capacity: string,
@@ -46,7 +48,8 @@ export interface IInputs{
 }
 
 export interface IShipsTableProps {
-  ships: IStarship[]
+  ships: IStarship[],
+  setShips: Dispatch<SetStateAction<IStarship[] | null>>
 }
 
 export interface ILinkButtonProps{
@@ -54,4 +57,14 @@ export interface ILinkButtonProps{
   to: string,
   bg?: string,
   color?: string
+}
+
+export interface IArrowIconProps{
+  asc: boolean
+}
+
+export interface ITableHeaderProps{
+  page: string,
+  asc: boolean | undefined,
+  property: string,
 }

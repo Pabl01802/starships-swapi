@@ -96,7 +96,7 @@ export const Starship = () => {
             </label>
             <label className='ship-form-label'>
               <span>Length</span>
-              <input type='number' defaultValue={starship?.length.replace(',', '.')} disabled={!isLocal} {...register('length')} required />
+              <input type='number' defaultValue={starship?.length} disabled={!isLocal} {...register('length')} required />
             </label>
             <label className='ship-form-label'>
               <span>Max atmospheric speed</span>
